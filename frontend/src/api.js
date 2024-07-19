@@ -9,3 +9,4 @@ const api = axios.create({
 export const fetchCards = () => api.get('/cards');
 export const loginUser = (credentials) => api.post('/login', credentials);
 export const signupUser = (data) => api.post('/signup', data);
+export const searchQuery = (query) => api.post('/')
