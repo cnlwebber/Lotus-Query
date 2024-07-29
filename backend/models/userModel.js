@@ -1,9 +1,22 @@
 const db = require('../config/db');
 const bcrypt = require('bcryptjs');
+const saltRounds = 12;
+
+const hash = async (passowrd) => {
+    try {
+        const salt = await bcrypt.genSalt(saltRounds);
+        const hashed = await bcrypt.hash(password, salt);
+        return hashed;
+    } catch (e) {
+        return e;
+    }
+}
 
 // db requests return lists of tuples, where the tuples are basically jsons
 const createUser = async (username, email, password) => {
-    const hashedPassword = await bcrypt.hash(password, 12);
+    const hashedPassword = hash(password);
+    // maybe creation date attribute?
+    // const date = Date();
     const [result] = await db.execute(
       'INSERT INTO users (username, email, password) VALUES (?, ?, ?)',
       [username, email, hashedPassword]
