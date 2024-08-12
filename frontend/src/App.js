@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Home from './pages/Home';
 import Search from './pages/Results';
 import Account from './pages/Account';
-import Navbar from './src/components/Navbar';
+import Navbar from './components/Navbar';
 
 // defines routes and their corresponding components for the front end
 function App() {
