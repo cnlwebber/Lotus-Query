@@ -17,7 +17,6 @@ const Home = () => {
 
   return (
     <div className="homePage">
-      <SearchBar></SearchBar>
       <div className="randomCards">
         {randCards.map(card => (
           <CardButton key={card.uuid} scryfall_id={card.scryfall_id} name={card.name} />
