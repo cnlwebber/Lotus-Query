@@ -82,8 +82,6 @@ const searchCards = async (req) => {
     if (conditions.length > 0) {
         baseQuery += ' WHERE ' + conditions.join(' AND ');
     }
-    console.log("BASE QUERY", baseQuery)
-    console.log("VALUES", values)
     const [rows] = await db.execute(baseQuery, values);
     return rows;
 };

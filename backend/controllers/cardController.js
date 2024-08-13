@@ -4,9 +4,10 @@ const { getRandCards, searchCards } = require('../models/cardModel.js');
 // number of random cards for the home display
 const homeDisplay = 5;
 
-exports.getHomeCards = async (_req, res) => {
+exports.getHomeCards = async (req, res) => {
     try {
-        const cards = await getRandCards(homeDisplay);
+        console.log("req.query.n:", req.query.n)
+        const cards = await getRandCards(req.query.n);
         // 200 status code is the "OK" code (successful HTTP request)
         res.status(200).json(cards);
         

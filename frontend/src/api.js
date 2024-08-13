@@ -6,6 +6,6 @@ const api = axios.create({
 
 // makes requests to endpoints using axios api instance
 // these functions will be attached/used in buttons like a login button/signup button etc.
-export const fetchCards = () => api.get('/cards');
+export const nRandomCards = (n) => api.get('/cards', { params: { n } });
 export const searchQuery = (query) => api.get('/cards/search', { params: { query } })
 export const randomCard = () => api.get('/random')
