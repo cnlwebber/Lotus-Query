@@ -52,7 +52,7 @@ Next, you need to generate a token unique token used by our backend, and include
 node -e "console.log(require('crypto').randomBytes(256).toString('base64'));" >> ./.env
 ```
 
-Then, open that `.env.` file in the following fashion:
+Then, open that `.env` file in the following fashion:
 
 ```env
 DB_HOST=localhost
