@@ -7,7 +7,7 @@ const CardSlideshow = () => {
     for (var i = 0; i < 20; i++) {
         cards.push(<RandomCard />);
     }
-
+    
     // modified source code:
     // https://codepen.io/studiojvla/pen/qVbQqW
     return (
