@@ -1,9 +1,9 @@
 :root{
     --light-background: #3f3f3f;
     --dark-background: #282828;
-    --animation-speed: 5s;
+    --animation-speed: 40s;
     --slideshow-card-width: 14rem;
-    --slideshow-num-of-cards: 5;
+    --slideshow-num-of-cards: 20;
 }
 
 body {
@@ -138,8 +138,6 @@ code {
     height: 20rem;
     width: 80vw;
     overflow: hidden;
-    /* temp */
-    border: 1px solid red;
 }
 
 .cardSlideshowTrack {
@@ -148,8 +146,6 @@ code {
     width: calc(var(--slideshow-card-width) * var(--slideshow-num-of-cards) * 2);
     height: 20rem;
     animation: scroll var(--animation-speed) linear infinite;
-    /* temp */
-    border: 1px solid red;
 }
 
 .cardSlideshowTrack::after {
@@ -164,4 +160,10 @@ code {
     width: 12rem;
     padding-left: 1rem;
     padding-right: 1rem;
+}
+
+.cardSlideshow .randomCard img:hover {
+    width: 14rem;
+    padding-left: 0;
+    padding-right: 0;
 }
