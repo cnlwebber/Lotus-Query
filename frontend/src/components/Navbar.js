@@ -24,7 +24,7 @@ const Navbar = () => {
         <div id="nav-bar">
             <div id="nav-bar-logo">
                 <div> <img src={logo} alt="Logo" /> </div>
-                <h2> Lotus Query </h2>
+                <h2 className="website-name"> Lotus Query </h2>
             </div>
             <nav>
                 < LinkTo dir={"/"} label={"Home"} ico={home_ico} />
