@@ -14,7 +14,7 @@ Once this is downloaded, you have a few options. The first option is to download
 
 All following code has been tested on MySQL Server version `8.0.37-0ubuntu0.22.04.3`, and has not been tested on other distributions. First, open a Bash command prompt in the folder where you downloaded the initialization MySQL script. For the purposes of this demonstration, I will assume it is called `lite-v1_0.sql`, but any name works. Then, log in to MySQL server using your username and password. If you need help with this step, please look at the [MySQL Documentation](https://dev.mysql.com/doc/refman/8.4/en/connecting.html). 
 
-After you are logged into MySQL server, run the following command to create a the database:
+After you are logged into MySQL server, run the following command to create the database:
 
 ```bash
 CREATE DATABASE lotus_query;
