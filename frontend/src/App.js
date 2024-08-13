@@ -1,8 +1,8 @@
 // Routing setup (modifying the URL and determining what components to render)
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Home from './pages/Home';
-import Navbar from './components/Navbar';
 import Results from './pages/Results';
+import Navbar from './components/Navbar';
 import Search from './pages/Search'
 import Random from './pages/Random';
 

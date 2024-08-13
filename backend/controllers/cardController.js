@@ -1,4 +1,4 @@
-const { getRandCards, getCardQuery } = require('../models/cardModel.js');
+const { getRandCards, searchCards } = require('../models/cardModel.js');
 
 
 // number of random cards for the home display
@@ -18,9 +18,9 @@ exports.getHomeCards = async (_req, res) => {
 
 exports.queryCards = async (req, res) => {
     try {
-        const queryRes = await getCardQuery(req);
-        res.status(200).json(cards);
+        const queryRes = await searchCards(req);
+        res.status(200).json(queryRes);
     } catch (error) {
-        res.status(500).json({ error: 'Error fetching cards' })
+        res.status(500).json({ error: 'Error querying cards' })
     }
 }

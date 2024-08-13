@@ -2,20 +2,17 @@ const db = require('../config/db.js');
 
 const getRandCards = async (numOfCards) => {
     const [rows] = await db.query(`SELECT * FROM cards ORDER BY RAND() LIMIT ${numOfCards}`);
-    console.log(rows)
     return rows;
 };
 
 const searchCards = async (req) => {
-    const queryString = req.body.query;
-    
+    const queryString = req.query.query;
     let baseQuery = 'SELECT * FROM cards';
     let conditions = [];
     let values = [];
     let nameSearch = ''; 
     let flag = true
     const filters = queryString.split(' ');
-
     filters.forEach(filter => {
 
         if (filter.startsWith('cmc')) {
@@ -72,11 +69,11 @@ const searchCards = async (req) => {
             values.push(set);
 
         } else {
-            nameSearch += `%${filter}%`;
+            nameSearch += `%${filter}% `;
         }
     });
 
-
+    nameSearch = nameSearch.trim()
     if (nameSearch) {
         conditions.push('cards.name LIKE ?');
         values.push(nameSearch);
@@ -85,7 +82,8 @@ const searchCards = async (req) => {
     if (conditions.length > 0) {
         baseQuery += ' WHERE ' + conditions.join(' AND ');
     }
-
+    console.log("BASE QUERY", baseQuery)
+    console.log("VALUES", values)
     const [rows] = await db.execute(baseQuery, values);
     return rows;
 };

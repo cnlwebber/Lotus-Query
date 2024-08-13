@@ -2,17 +2,17 @@ import React from 'react';
 import SearchBar from '../components/searchBar';
 import { useLocation } from 'react-router-dom';
 
-const Search = () => {
+const Results = () => {
 
   const location = useLocation();
   const { results, query } = location.state;
-
+  
   return (
     <div>
-      <h1>Results Page</h1>
-      <p>This is where the query results will be displayed</p>
+      <SearchBar></SearchBar>
+      <h2>{results.length} results</h2>
     </div>
   );
 };
 
-export default Search;
+export default Results;
