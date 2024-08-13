@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 const CardButton = ({ scryfall_id, name }) => {
     const fileFace = 'front';
-    const fileType= 'large';
+    const fileType= 'normal';
     const fileFormat = 'jpg';
     const dir1 = scryfall_id.charAt(0);
     const dir2 = scryfall_id.charAt(1);
