@@ -13,7 +13,6 @@ const RandomCard = () => {
     };
     getCards();
   }, []);
-    console.log(randCards)
 
 
   return (

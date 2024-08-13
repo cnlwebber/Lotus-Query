@@ -3,7 +3,7 @@
     --dark-background: #282828;
     --animation-speed: 5s;
     --slideshow-card-width: 14rem;
-    --slideshow-num-of-cards: 20;
+    --slideshow-num-of-cards: 5;
 }
 
 body {
@@ -153,7 +153,7 @@ code {
 }
 
 .cardSlideshowTrack::after {
-    content: .cardSlideshowTrack;
+    content: attr(div);
     position: absolute;
     left: 0;
     right: 0;

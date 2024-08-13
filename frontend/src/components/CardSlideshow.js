@@ -3,8 +3,9 @@ import { Link } from 'react-router-dom';
 import RandomCard from '../components/RandomCard.js';
 
 const CardSlideshow = () => {
+    const NUM_OF_CARDS = 5;
     const cards = [];
-    for (var i = 0; i < 20; i++) {
+    for (var i = 0; i < NUM_OF_CARDS; i++) {
         cards.push(<RandomCard />);
     }
     
