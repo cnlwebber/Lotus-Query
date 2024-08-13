@@ -16,7 +16,7 @@ const testConnection = async () => {
         // Run a simple query to verify the connection.
         const [rows, fields] = await connection.query('SELECT * FROM cards LIMIT 1');
         console.log('Query result:', rows);
-
+ 
         // Release the connection back to the pool
         connection.release();
     } catch (error) {

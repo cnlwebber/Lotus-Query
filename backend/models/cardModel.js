@@ -1,7 +1,7 @@
 const db = require('../config/db.js');
 
 const getRandCards = async (numOfCards) => {
-    const [rows] = await db.execute(`SELECT * FROM cards ORDER BY RAND() LIMIT 5`, []);
+    const [rows] = await db.query(`SELECT * FROM cards ORDER BY RAND() LIMIT ${numOfCards}`);
     console.log(rows)
     return rows;
 };
