@@ -9,6 +9,7 @@ const Home = () => {
   useEffect(() => {
     const getCards = async () => {
       const response = await fetchCards();
+      console.log(response.data)
       setRandCards(response.data);
     };
     getCards();
