@@ -1,0 +1,25 @@
+- Scryfall ID in the DB, so I can start working on the backend function to fetch the images.
+
+
+
+
+
+Search Tools:
+
+    "v: or vision:" search the text of the card (idk about this, we don't have it in the database)
+
+    "cmc> cmc< cmc<= cmc>= cmc=" cmc ranges/values
+        
+    "pow..." power ranges/values
+
+    "tou..." toughness ranges/values
+
+    "color:WUBRG" search for cards with these colors ANYWHERE
+
+    "cmm:WUBRG" search for cards with the color IDENTITY matching
+
+    "r: or rarity:" rarity of cards
+
+    "l: or legal:" find cards that are legal in certain formats (may use ~)
+
+    "s: or set:" find cards in given set code

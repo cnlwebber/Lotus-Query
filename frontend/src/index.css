@@ -44,6 +44,7 @@ code {
 
 #nav-bar-logo h2 {
     font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+    font-size: 1.7em;
 }
 
 
@@ -61,13 +62,54 @@ code {
 }
 
 .nav-bar-ico {
-    height: 2rem;
+    height: 1.6rem;
     padding-right: 0.3rem;
 }
 
 #nav-bar a {
-    font-size: 1.3rem;
+    font-size: 1.8rem;
     color: black;
     text-decoration: none;
 }
 
+/* search bar */
+.search {
+    width: 500px;
+    height: 40px;
+    margin: 150px auto;
+    background: #121212;
+  }
+  
+  .search input {
+    width: 370px;
+    padding: 12px;
+    float: left;
+    color: #F0EDEE;
+    border: 0;
+    background: transparent;
+    border-radius: 3px 0 0 3px;
+  }
+  
+  .search input:focus {
+    outline: 0;
+    background: transparent;
+  }
+  
+  .search button {
+    float: right;
+    border: 0;
+    cursor: pointer;
+    height: 40px;
+    width: 80px;
+    color: #F0EDEE;
+    background: transparent;
+    border-left: 1px solid #F0EDEE;
+  }
+  
+  .search button:hover {
+    background: #F0EDEE;
+    color: #121212;
+  }
+  
+  /* search bar */
+  

@@ -1,7 +1,6 @@
 import React from 'react';
 import SearchBar from '../components/searchBar';
 import { useLocation } from 'react-router-dom';
-import './Results.css'
 
 const Search = () => {
 

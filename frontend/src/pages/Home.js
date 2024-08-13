@@ -1,11 +1,27 @@
-import React from 'react';
-import './Home.css'
+import React, { useState, useEffect } from 'react';
+import SearchBar from '../components/searchBar';
+import CardButton from '../components/card';
+import { fetchCards } from '../api';
 
 const Home = () => {
+  const [randCards, setRandCards] = useState([]);
+
+  useEffect(() => {
+    const getCards = async () => {
+      const response = await fetchCards();
+      setRandCards(response.data);
+    };
+    getCards();
+  }, []);
+
   return (
-    <div>
-      <h1>Home Page</h1>
-      <p>Welcome to Lotus Query</p>
+    <div className="homePage">
+      <SearchBar></SearchBar>
+      <div className="randomCards">
+        {randCards.map(card => (
+          <CardButton key={card.uuid} scryfall_id={card.scryfall_id} name={card.name} />
+        ))}
+      </div>
     </div>
   );
 };

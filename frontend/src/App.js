@@ -1,9 +1,8 @@
 // Routing setup (modifying the URL and determining what components to render)
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Home from './pages/Home';
-import Search from './pages/Results';
-import Account from './pages/Account';
 import Navbar from './components/Navbar';
+import Results from './pages/Results';
 
 // defines routes and their corresponding components for the front end
 function App() {
@@ -12,8 +11,7 @@ function App() {
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/search" element={<Search />} />
-        <Route path="/account" element={<Account />} />
+        <Route path="/results" element={<Results />} />
       </Routes>
     </Router>
   );
