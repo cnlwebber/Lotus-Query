@@ -8,7 +8,6 @@ const Home = () => {
         cards.push(<RandomCard />);
     }
 
-
     return (
         <div className="homePage">
             <CardSlideshow />
