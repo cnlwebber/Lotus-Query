@@ -8,3 +8,4 @@ const api = axios.create({
 // these functions will be attached/used in buttons like a login button/signup button etc.
 export const fetchCards = () => api.get('/cards');
 export const searchQuery = (query) => api.post('/cards/search')
+export const randomCard = () => api.get('/random')

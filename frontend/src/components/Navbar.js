@@ -7,6 +7,8 @@ import home_ico from '../assets/home.svg';
 // icon source:
 // https://github.com/apancik/public-domain-icons/blob/df284bf4bbd52becf5d3cf73791660e3f538a1e3/dist/object%20search%20search%20find%20magnify%20magnifying%20.svg
 import search_ico from '../assets/search.svg';
+// https://icon-sets.iconify.design/material-symbols/shuffle/
+import shuffle_ico from '../assets/shuffle.svg';
 
 const LinkTo = ({dir, label, ico}) => {
     return (
@@ -29,6 +31,7 @@ const Navbar = () => {
             <nav>
                 < LinkTo dir={"/"} label={"Home"} ico={home_ico} />
                 < LinkTo dir={"/search"} label={"Search"} ico={search_ico} />
+                < LinkTo dir={"/random"} label={"Random"} ico={shuffle_ico} />
             </nav>
         </div>
     );

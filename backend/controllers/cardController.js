@@ -12,7 +12,7 @@ exports.getHomeCards = async (_req, res) => {
         
     } catch (error) {
         // 500 status code is a generic error code
-        res.status(500).json({ error: 'Error fetching cards' });
+        res.status(500).json({ error: 'Error fetching home cards' });
     }
 };
 

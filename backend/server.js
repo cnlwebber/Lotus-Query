@@ -1,6 +1,7 @@
 const express = require('express');
 const cors = require('cors');
-const cardRoutes = require('./routes/cardRoutes');
+const cardRoutes = require('./routes/cardRoutes.js');
+const randRoutes = require('./routes/randRoutes.js')
 require('dotenv').config();
 
 const app = express();
@@ -13,7 +14,7 @@ app.use(express.json());
 
 // Set route prefixes here for organization.
 app.use('/api/cards', cardRoutes);
-
+app.use('/api/random', randRoutes);
 // Port is either set by the environment when hosting online or defaults to 5000 when hosting locally
 const PORT = process.env.PORT || 5000;
 

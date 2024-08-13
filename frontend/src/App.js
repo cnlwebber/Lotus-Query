@@ -4,6 +4,7 @@ import Home from './pages/Home';
 import Navbar from './components/Navbar';
 import Results from './pages/Results';
 import Search from './pages/Search'
+import Random from './pages/Random';
 
 // defines routes and their corresponding components for the front end
 function App() {
@@ -14,6 +15,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/results" element={<Results />} />
         <Route path="/search" element={<Search />} />
+        <Route path="/random" element={<Random />} />
       </Routes>
     </Router>
   );
