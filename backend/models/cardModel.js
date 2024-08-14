@@ -6,7 +6,10 @@ const getRandCards = async (numOfCards) => {
 };
 
 const idSearch = async (scryfall_id) => {
+    console.log("ID SEARCH");
+    console.log(scryfall_id);
     const [rows] = await db.execute('SELECT * FROM cards WHERE scryfall_id = ?', [scryfall_id]);
+    console.log(rows);
     return rows;
 }
 

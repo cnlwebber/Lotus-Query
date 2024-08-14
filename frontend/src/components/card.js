@@ -31,8 +31,12 @@ const CardButton = ({ scryfall_id, name }) => {
     const dir1 = scryfall_id.charAt(0);
     const dir2 = scryfall_id.charAt(1);
     const image = `https://cards.scryfall.io/${fileType}/${fileFace}/${dir1}/${dir2}/${scryfall_id}.${fileFormat}`;
+    
+    // Construct the URL using the scryfall_id
+    const queryParams = `/${scryfall_id}`;
+    const linkTo = `/scry${queryParams}`;
     return (
-        <Link to={`/scry`} className="cardButton">
+        <Link to={linkTo} className="cardButton">
             <img src={image} alt={name} classname={`cardImage`}></img>
         </Link>
     );

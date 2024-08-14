@@ -1,4 +1,4 @@
-const { getRandCards, searchCards } = require('../models/cardModel.js');
+const { getRandCards, searchCards, idSearch } = require('../models/cardModel.js');
 
 
 // number of random cards for the home display
@@ -26,9 +26,16 @@ exports.queryCards = async (req, res) => {
 }
 
 exports.scryfallSearch = async (req, res) => {
+    console.clear();
+    console.log("scryfallSearch");
+    console.log(req);
+    const scryfall_id = req.params.scryfall_id;
+    console.log(scryfall_id);
     try {
-        const res = await idSearch(req.query.scryfall_id);
-        res.status(200).json(res);
+        const scryCard = await idSearch(scryfall_id);
+        console.log("result");
+        console.log(scryCard);
+        res.status(200).json(scryCard);
     } catch (error) {
         res.status(500).json({ error: 'Error fetching card with scryfall id'})
     }

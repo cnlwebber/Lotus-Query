@@ -17,7 +17,7 @@ function App() {
         <Route path="/results" element={<Results />} />
         <Route path="/search" element={<Search />} />
         <Route path="/random" element={<Random />} />
-        <Route path="/scry" element={<Scry />} />
+        <Route path="/scry/:scryfall_id" element={<Scry />} />
       </Routes>
     </Router>
   );
