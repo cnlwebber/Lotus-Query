@@ -60,6 +60,7 @@ const SearchBar = ({ prevOrder, prevDir, prevQuery }) => {
             
                 {loading ? "Searching..." : "Search"}
             </button>
+
             <div class="select-container">
                 <OrderingMenu
                     ordering={ordering}
@@ -70,7 +71,6 @@ const SearchBar = ({ prevOrder, prevDir, prevQuery }) => {
                     directionChange={handleOrderingDirChange}
                 />
             </div>
-
             {error && <p className="error">{error}</p>}
         </form>
         </div>
