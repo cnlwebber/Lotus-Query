@@ -281,26 +281,38 @@ code {
 }
 
 .pagination-page, .pagination-break, .pagination-prev, .pagination-next {
-    display: inline-flex;
+    display: flex;
     justify-content: center;
-    width: 2rem;
+    align-items: center;
     height: 2rem;
-    padding: .4rem 1rem;
+    width: 2rem;
     margin: 0 0.2rem;
     border-radius: 4px;
     background-color: var(--light-background);
     color: var(--purple);
     font-size: .8rem;
-    text-align: center;
     cursor: pointer;
     border: 1px solid #ccc;
     box-sizing: border-box;
+    text-align: center;
 }
 
-.pagination-prev img, .pagination-next img {
-    vertical-align: middle;
-    line-height: 2rem;
-    margin-top: -.3rem;
+.pagination-page a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    padding: 0;
+}
+
+.pagination-prev a, .pagination-next a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    padding: 0;
 }
 
 .pagination-page:hover, .pagination-prev:hover, .pagination-next:hover {

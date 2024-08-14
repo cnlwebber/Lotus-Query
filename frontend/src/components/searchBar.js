@@ -3,10 +3,8 @@ import { useNavigate, createSearchParams } from 'react-router-dom';
 import OrderingMenu from './ordering';
 import OrderingDir from './orderingDir';
 
-const SearchBar = ({ prevOrder, prevDir }) => {
-    console.log("PREVORDER", prevOrder)
-    console.log("PREVDIR", prevDir)
-    const [userQuery, setUserQuery] = useState("");
+const SearchBar = ({ prevOrder, prevDir, prevQuery }) => {
+    const [userQuery, setUserQuery] = useState(prevQuery || "");
     const [ordering, setOrdering] = useState(prevOrder || "Name");
     const [direction, setDirection] = useState(prevDir || "ASC");
     const [loading, setLoading] = useState(false);

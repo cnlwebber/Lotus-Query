@@ -21,6 +21,7 @@ const Results = () => {
   const [pageCount, setPageCount] = useState(0);
   const [itemOffset, setItemOffset] = useState(0);
   const [currentPage, setCurrentPage] = useState(0);
+  const query = searchParams.get('query') || '';
   const ordering = searchParams.get('order') || 'Name';
   const direction = searchParams.get('dir') || 'ASC';
   const resultsPerPage = 50;
@@ -29,9 +30,7 @@ const Results = () => {
     const fetchResults = async () => {
       setLoading(true);
       setError(null);
-
       try {
-        const query = searchParams.get('query');
         if (query && ordering && direction) {
           const res = await searchQuery(query, ordering, direction);
           setResults(res.data);
@@ -48,7 +47,7 @@ const Results = () => {
     };
 
     fetchResults();
-  }, [itemOffset, resultsPerPage, searchParams]);
+  }, [itemOffset, resultsPerPage, searchParams, ordering, direction, query]);
 
   const handlePageClick = useCallback((event) => {
     const newOffset = (event.selected * resultsPerPage) % results.length;
@@ -61,6 +60,7 @@ const Results = () => {
       <SearchBar 
         prevOrder={ordering}
         prevDir={direction}
+        prevQuery={query}
       />
       {error && <p className="error">{error}</p>}
 
