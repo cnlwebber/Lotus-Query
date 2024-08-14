@@ -87,7 +87,7 @@ const Results = () => {
           <CardButton key={index} scryfall_id={result.scryfall_id} name={result.name} />
         ))}
       </ul>
-      <h2>{loading ? "Loading..." : `Showing page ${currentPage + 1} of ${pageCount} pages`}</h2>
+      <h2>{loading ? "Loading..." : `Showing page ${pageCount !== 0 ? currentPage + 1 : 0} of ${pageCount} pages`}</h2>
       <ReactPaginate
         breakLabel={"..."}
         breakClassName={'pagination-break'}

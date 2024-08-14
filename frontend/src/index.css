@@ -78,8 +78,13 @@ code {
 }
 
 .nav-bar-ico {
-    height: 1.6rem;
+    height: 2.1rem;
     padding-right: 0.3rem;
+}
+
+#nav-bar nav .nav-bar-ico {
+    transform: translateY(25%);
+    height: 2.5rem;
 }
 
 #nav-bar a {
