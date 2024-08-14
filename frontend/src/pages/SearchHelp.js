@@ -111,7 +111,7 @@ const SearchHelp = () => {
             <pre><code> s:LEB </code></pre>
             <pre><code> set:M12 </code></pre>
 
-            <h2> Using Query Paramaters in Conjunction </h2>
+            <h2> Using Query Parameters in Conjunction </h2>
             <p> All of the previously defined parameters can be used in conjuction with each other to create search queries with more complex discriminations. Here are a few examples! </p>
             <p> Example 1: Black magic cards from the set core set Magic 2012 with both power and converted mana cost greater than 4. </p>
             <pre><code> s:M12 pow&gt;4 cmc&gt;4 color:B </code></pre>
