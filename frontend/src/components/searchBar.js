@@ -61,10 +61,12 @@ const SearchBar = ({ prevOrder, prevDir, prevQuery }) => {
                 {loading ? "Searching..." : "Search"}
             </button>
             <OrderingMenu
+                className="orderDropdown"
                 ordering={ordering}
                 orderingChange={handleOrderingChange}
             />
             <OrderingDir
+                className="orderDirectionDropdown"
                 direction={direction}
                 directionChange={handleOrderingDirChange}
             />

@@ -7,6 +7,8 @@
     --animation-speed: 60s;
     --slideshow-card-width: 14rem;
     --slideshow-num-of-cards: 20;
+    --eggshell: #F0EDEE;
+    --text-color: #8b8b8b;
 }
 
 body {
@@ -19,8 +21,8 @@ body {
     -moz-osx-font-smoothing: grayscale;
 }
 
-p, h1, h2, li {
-    color: #8b8b8b;
+p, h1, h2, li, td {
+    color: var(--text-color);
 }
 
 a  {
@@ -98,6 +100,21 @@ code {
 
 .searchWrapper {
     width: 500px;
+    margin-bottom: 1.5rem;
+}
+
+.orderDropdown select {
+    align-items: center;
+    border-radius: 4px;
+    background-color: var(--light-background);
+    color: var(--purple);
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+.orderDirectionDropdown {
+    
 }
 
 .search {
@@ -127,7 +144,7 @@ code {
     cursor: pointer;
     height: 40px;
     width: 80px;
-    color: #F0EDEE;
+    color: var(--eggshell);
     background: transparent;
     border-left: 1px solid #F0EDEE;
 }
@@ -347,15 +364,51 @@ code {
     height: 1rem;
 }
 
+.cardPageWrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 2rem;
+}
+
+.cardPageWrapper h1 {
+    color: var(--purple);
+}
+
 .cardPage {
     display: flex;
     flex-direction: row;
-    justify-content: space-between; 
 }
 
-.cardArea, .infoArea {
-    flex: 1; 
-    margin: 10px; 
-    padding-left: 10px;
-    padding-bottom: 10px;
+.cardArea {
+    margin-right: 3rem;
 }
+
+.infoArea {
+    flex-direction: column;
+    justify-content: center;
+    width: 30rem;
+}
+
+.infoArea table, th, td {
+}
+
+.infoArea h2 {
+    padding-top: 3rem;
+    padding-bottom: 1rem;
+    width: fit-content;
+    margin: auto;
+}
+
+.infoArea th {
+    text-align: left;
+    padding-top: 0.5rem;
+    color: var(--purple);
+    width: 8rem;
+    
+}
+
+.infoArea td {
+    width: 20rem;
+}
+

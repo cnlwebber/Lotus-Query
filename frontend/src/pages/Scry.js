@@ -3,7 +3,6 @@ import { scry } from '../api';
 import CardButton from '../components/card';
 
 const Scry = () => {
-    
     const [card, setCard] = useState([]);
 
     useEffect(() => {
@@ -16,8 +15,9 @@ const Scry = () => {
     }, []);
 
     return (
+      <div className="cardPageWrapper">
+      <h1> Card Information </h1>
       <div className="cardPage">
-        
         <div className="cardArea">
         {card.map(card => (
           <div>
@@ -28,33 +28,89 @@ const Scry = () => {
 
         {card.map(card => (
           <div className="infoArea">
-            <h2 className="cardInfoTitle">Card Information</h2>
-            <p className="cardManaCost">Mana Cost: {card.mana_cost} </p>
-            <p className="cardTotalManaCost">Total Mana Cost: {card.cmc} </p>
-            <p className="cardRarity"> Rarity: {card.rarity.toUpperCase()}</p>
-            <p className="cardType">Type: {card.type}</p>
-          {card.power && card.toughness && (
-            <p className="powerToughness">Power/Toughness: {card.power}/{card.toughness}</p>
-          )}
-            <p className="cardColor">Color: {convertColor(card.color)}</p>
-            <p className="cardColorIdentity">Color Identity: {convertColor(card.color_identity)}</p>
-            <p className="cardSet">Card Set: {card.set_name} ({card.set_id})</p>
-          <p className="legalityTitle">Legality:</p>
-          <ul className="legalityList">
-            <li className="commander"> Commander: {card.commander.toUpperCase()} </li> 
-            <li className="legacy"> Legacy: {card.legacy.toUpperCase()} </li> 
-            <li className="modern"> Modern: {card.modern.toUpperCase()} </li> 
-            <li className="pauper"> Pauper: {card.pauper.toUpperCase()} </li> 
-            <li className="pioneer"> Pioneer: {card.pioneer.toUpperCase()} </li> 
-            <li className="standard"> Standard: {card.standard.toUpperCase()} </li> 
-            <li className="vintage"> Vintage: {card.vintage.toUpperCase()} </li>  
-          </ul>
-          {/* SQL Date Format: YYYY-MM-DDTHH:MM:SSSZ */}
-          <p className='cardReleaseDate'> Release Date: {card.release_date.substring(0, 10)} </p>
-        </div>
+            <table>
+              <tr>
+                <th> Name </th>
+                <td> {card.name} </td>
+              </tr>
+              <tr>
+                <th> Set </th>
+                <td> {card.set_name} </td>
+              </tr>
+              <tr>
+                <th> Set Code </th>
+                <td> {card.set_id} </td>
+              </tr>
+              <tr>
+                <th> Release Date </th>
+                <td> {card.release_date.substring(0, 10)} </td>
+              </tr>
+              <tr>
+                <th> Mana Cost </th>
+                <td> {card.mana_cost} </td>
+              </tr>
+              <tr>
+                <th> CMC </th>
+                <td> {card.cmc} </td>
+              </tr>
+              <tr>
+                <th> Card Type </th>
+                <td> {card.type} </td>
+              </tr>
+              {card.power && card.toughness && (
+              <tr>
+                <th> Creature Stats </th>
+                <td> {card.power}/{card.toughness} </td>
+              </tr>)}
+              <tr>
+                <th> Color(s) </th>
+                <td> {convertColor(card.color)} </td>
+              </tr>
+              <tr>
+                <th> Color Identity </th>
+                <td> {convertColor(card.color_identity)} </td>
+              </tr>
+              <tr>
+                <th> Rarity </th>
+                <td> {card.rarity.toUpperCase()} </td>
+              </tr>
+            </table>
+            <h2> Legal Rulings: </h2>
+            <table>
+              <tr>
+                <th> Commander </th>
+                <td> {card.commander.toUpperCase()} </td>
+              </tr>
+              <tr>
+                <th> Legacy </th>
+                <td> {card.legacy.toUpperCase()} </td>
+              </tr>
+              <tr>
+                <th> Modern </th>
+                <td> {card.modern.toUpperCase()} </td>
+              </tr>
+              <tr>
+                <th> Pauper </th>
+                <td> {card.pauper.toUpperCase()} </td>
+              </tr>
+              <tr>
+                <th> Pioneer </th>
+                <td> {card.pioneer.toUpperCase()} </td>
+              </tr>
+              <tr>
+                <th> Standard </th>
+                <td> {card.standard.toUpperCase()} </td>
+              </tr>
+              <tr>
+                <th> Vintage </th>
+                <td> {card.vintage.toUpperCase()} </td>
+              </tr>
+            </table>
+          </div>
         ))}
 
-      </div> /* cardPage */
+      </div>
+      </div>
     );
 };
 
