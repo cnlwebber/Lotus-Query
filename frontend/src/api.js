@@ -9,3 +9,8 @@ const api = axios.create({
 export const nRandomCards = (n) => api.get('/cards', { params: { n } });
 export const searchQuery = (query) => api.get('/cards/search', { params: { query } })
 export const randomCard = () => api.get('/random')
+export const scry = (scryfall_id) => api.get(`/scry/${scryfall_id}`)
+  .catch(error => {
+    console.error('ERROR FETCHING SCRY:', scryfall_id, error);
+    throw error;
+  });

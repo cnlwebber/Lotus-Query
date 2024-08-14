@@ -7,7 +7,10 @@ import ReactPaginate from 'react-paginate';
 import left_ico from '../assets/left-arrow.svg';
 import right_ico from '../assets/right-arrow.svg';
 
+
 const Results = () => {
+
+
   const location = useLocation();
   const [searchParams] = useSearchParams();
   const [results, setResults] = useState(location.state?.results || []);
