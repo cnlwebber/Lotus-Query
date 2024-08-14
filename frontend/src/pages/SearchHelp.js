@@ -42,8 +42,8 @@ const SearchHelp = () => {
             <pre><code> pow=2 </code></pre>
             <pre><code> tou=8 </code></pre>
             <p> Or inequality symbols as detailed previously: </p>
-            <pre><code> cmc&lt;=3 </code></pre>
-            <pre><code> cmc&gt;9 </code></pre>
+            <pre><code> tou&lt;=3 </code></pre>
+            <pre><code> pow&gt;9 </code></pre>
 
             <h2> Color </h2>
             <p>A card&apos;s color is determined by the following things: </p>
