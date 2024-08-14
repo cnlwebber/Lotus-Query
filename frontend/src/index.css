@@ -184,6 +184,7 @@ code {
     100% { transform: translateX(calc(-1 * var(--slideshow-card-width) * var(--slideshow-num-of-cards)))}
 }
 
+/* https://codepen.io/mrphang/pen/XWxKdpV */
 .cardSlideshow {
     justify-content: center;
     background-color: var(--light-background);
@@ -400,9 +401,10 @@ code {
     display: flex;
     width: 10em;
     height: 2em;
-    border-radius: .25em;
+    border: 1px solid black;
     overflow: hidden;
     align-items: center;
+    transform: translateY(1rem) translateX(2em);
 }
 
 /* Reset Select */
@@ -446,13 +448,14 @@ code {
 
 /* Custom Select wrapper */
 .direction-select {
+    border: 1px solid black;
     position: relative;
     display: flex;
     width: 10em;
     height: 2em;
-    border-radius: .25em;
     overflow: hidden;
     align-items: center;
+    transform: translateY(-1rem) translateX(19em);
 }
 
 /* Reset Select */
@@ -501,7 +504,6 @@ code {
     height: 5rem;
 }
 
-  /* https://codepen.io/mrphang/pen/XWxKdpV */
 
 .cardArea {
     margin-right: 3rem;
