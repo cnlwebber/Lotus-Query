@@ -282,9 +282,9 @@ code {
 .pagination-page, .pagination-break, .pagination-prev, .pagination-next {
     display: inline-flex;
     justify-content: center;
-    align-items: center;
     width: 2rem;
     height: 2rem;
+    padding: .4rem 1rem;
     margin: 0 0.2rem;
     border-radius: 4px;
     background-color: var(--light-background);

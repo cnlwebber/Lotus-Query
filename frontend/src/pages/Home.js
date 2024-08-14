@@ -15,7 +15,7 @@ const Home = () => {
         <CardSlideshow />
         <div className="innerWrapper">
             <h1> Welcome </h1>
-            <p> Hello and welcome to Lotus Query! Lotus Query is a student project implementing a Magic the Gathering card database and custom frontend for querying cards! This project was originally started in July of 2024 for a Database Systems &amp; Design course at <a href="https://www.tacoma.uw.edu/">University of Washington Tacoma</a>. </p>
+            <p> Hello and welcome to Lotus Query! Lotus Query is a student project implementing a Magic the Gathering card database and custom frontend for querying cards! This project was originally started in July of 2024 for a Database Systems &amp; Design course at <a href="https://www.tacoma.uw.edu/">University of Washington Tacoma</a>. This project takes inspiration from amazing tools such as <a href="https://scryfall.com/">Scryfall</a> and  <a href="https://gatherer.wizards.com">Gatherer</a>.</p>
 
             <h2> Software </h2>
             <p> Our project utilizes <a href="https://www.mysql.com/">MySQL</a>, <a href="https://nodejs.org/en">Node.js</a>, and <a href="https://expressjs.com/">ExpressJS</a> using  the MVC design pattern as a backend framework for storing card data. All data was collected from another project via <a href="https://mtgjson.com/">MTGJson</a>; however, the table&apos;s schema was originally created by our members. The frontend of our application is developed using <a href="https://react.dev/">React</a> for general layout and uses <a href="https://www.npmjs.com/package/react-axios">Axios</a> to interface with the backend. </p>
