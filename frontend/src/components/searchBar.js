@@ -1,9 +1,14 @@
 import React, { useState } from 'react';
 import { useNavigate, createSearchParams } from 'react-router-dom';
-import { searchQuery } from '../api';
+import OrderingMenu from './ordering';
+import OrderingDir from './orderingDir';
 
-const SearchBar = () => {
+const SearchBar = ({ prevOrder, prevDir }) => {
+    console.log("PREVORDER", prevOrder)
+    console.log("PREVDIR", prevDir)
     const [userQuery, setUserQuery] = useState("");
+    const [ordering, setOrdering] = useState(prevOrder || "Name");
+    const [direction, setDirection] = useState(prevDir || "ASC");
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
     const navigate = useNavigate();
@@ -14,20 +19,26 @@ const SearchBar = () => {
         setError(null);
 
         try {
-            const res = await searchQuery(userQuery);
-            console.log("DEBUGGGING: ", res);
             navigate({ pathname: '/results',
                 search: createSearchParams({
-                    query: userQuery
-                }).toString()},
-                { state: { results: res.data, query: userQuery } });
+                    query: userQuery,
+                    order: ordering,
+                    dir: direction
+                }).toString()});
         } catch (err) {
             setError("Failed to fetch search results. Please try again.");
-            console.error(err);
         } finally {
             setLoading(false);
         }
     };
+
+    const handleOrderingChange = (event) => {
+        setOrdering(event.target.value);
+    }
+
+    const handleOrderingDirChange = (event) => {
+        setDirection(event.target.value);
+    }
 
     return (
         <div className="searchWrapper">
@@ -42,13 +53,23 @@ const SearchBar = () => {
                 onChange={(event) => setUserQuery(event.target.value)}
                 disabled={loading}
             />
+
             <button 
                 type="submit" 
                 className="searchButton"
                 disabled={loading}
             >
+            
                 {loading ? "Searching..." : "Search"}
             </button>
+            <OrderingMenu
+                ordering={ordering}
+                orderingChange={handleOrderingChange}
+            />
+            <OrderingDir
+                direction={direction}
+                directionChange={handleOrderingDirChange}
+            />
             {error && <p className="error">{error}</p>}
         </form>
         </div>

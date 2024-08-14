@@ -91,6 +91,21 @@ const SearchHelp = () => {
             <pre><code> l:commander </code></pre>
             <pre><code> legal:pauper </code></pre>
 
+            <h2> Type </h2>
+            <p> Each card has a super type that is held within our database, these are the possible search parameters: </p>
+            <ul>
+                <li> Artifact </li>
+                <li> Creature </li>
+                <li> Enchantment </li>
+                <li> Instant </li>
+                <li> Land </li>
+                <li> Planeswalker </li>
+                <li> Sorcery </li>
+            </ul>
+            <p> You can find cards of a given type using the type keyword: </p>
+            <pre><code> type:Artifact </code></pre>
+            <pre><code> type:Creature </code></pre>
+
             <h2> Set </h2>
             <p> Cards in Magic the Gathering are released in big chunks called sets. Each set usually has a theme as well as new keywords or card types available to players. Each set also has it&apos;s own unique set code - usually a 3-6 character string of letters and numbers. A comprehensive list of all set codes can be found <a href="https://en.wikipedia.org/wiki/List_of_Magic:_The_Gathering_sets"> here on Wikipedia</a>. Searching for cards within a specified set can be done using the s or set keyword: </p>
             <pre><code> s:LEB </code></pre>
@@ -103,7 +118,7 @@ const SearchHelp = () => {
             <p> Example 2: Cards with the word &quot;giant&quot; in the name with both power and toughness less than or equal to 1. </p>
             <pre><code> giant pow&lt;=1 tou&lt;=1 </code></pre>
             <p> Example 3: All common cards with strictly only white and blue in their color identity that are legal in vintage, and have a converted mana cost greater than 4. </p>
-            <pre><code> l:vintage r:common cmc>4 cmm:WU </code></pre>
+            <pre><code> l:vintage r:common cmc&gt;4 cmm:WU </code></pre>
 
         </div>
         </div>

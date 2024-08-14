@@ -36,7 +36,9 @@ const checkOperator = (string) => {
 
 const searchCards = async (req) => {
     let queryString = req.query.query;
-    let baseQuery = 'SELECT * FROM cards';
+    let ordering = req.query.order;
+    let orderingDir = req.query.dir;
+    let baseQuery = 'SELECT scryfall_id, name FROM cards';
     let conditions = [];
     let values = [];
     let nameSearch = ''; 
@@ -90,6 +92,11 @@ const searchCards = async (req) => {
                 flag = false
             }
 
+        } else if (filter.startsWith('type:')) {
+            const type = filter.slice(5);
+            conditions.push('cards.type LIKE ?');
+            values.push(`%${type}%`);
+
         } else if (filter.startsWith('color:')) {
             const color = filter.slice(6);
             conditions.push('cards.color LIKE ?');
@@ -120,6 +127,14 @@ const searchCards = async (req) => {
         }
     });
 
+    if (!baseQuery.includes('INNER JOIN cmc') && ordering==='Mana Cost') {
+        baseQuery += ' INNER JOIN cmc ON cards.mana_cost = cmc.mana_cost';
+    }
+
+    if (ordering==='Release Date') {
+        baseQuery += ' INNER JOIN sets ON cards.set_id = sets.set_id';
+    }
+
     nameSearch = nameSearch.trim()
     if (nameSearch) {
         conditions.push('cards.name LIKE ?');
@@ -129,6 +144,16 @@ const searchCards = async (req) => {
     if (conditions.length > 0) {
         baseQuery += ' WHERE ' + conditions.join(' AND ');
     }
+    if (ordering && orderingDir) {
+        if(ordering === "Mana Cost") {
+            baseQuery += ` ORDER BY cmc ${orderingDir}`
+        } else if (ordering === "Release Date"){
+            baseQuery += ` ORDER BY release_date ${orderingDir}`
+        } else {
+            baseQuery += ` ORDER BY name ${orderingDir}`
+        }
+    }
+
     const [rows] = await db.execute(baseQuery, values);
     return rows;
 };
