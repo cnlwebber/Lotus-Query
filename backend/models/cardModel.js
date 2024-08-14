@@ -18,7 +18,6 @@ const idSearch = async (scryfall_id) => {
         WHERE scryfall_id = ?
         LIMIT 1
     `, [scryfall_id]);
-    console.log(rows);
     return rows;
 }
 
@@ -153,8 +152,9 @@ const searchCards = async (req) => {
             baseQuery += ` ORDER BY name ${orderingDir}`
         }
     }
-
+    console.log(baseQuery)
     const [rows] = await db.execute(baseQuery, values);
+    
     return rows;
 };
 

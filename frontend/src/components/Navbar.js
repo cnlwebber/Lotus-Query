@@ -14,7 +14,7 @@ const LinkTo = ({dir, label, ico}) => {
     return (
     <div>
         <Link to={dir}>
-            <img className="nav-bar-ico" src={ico} alt="Icon" />
+            <img className="nav-bar-ico" src={ico} alt="Icon"/>
             {label}
         </Link>
     </div>
@@ -29,9 +29,9 @@ const Navbar = () => {
                 <h2 className="website-name"> Lotus Query </h2>
             </div>
             <nav>
-                < LinkTo dir={"/"} label={"Home"} ico={home_ico} className='homeNav'/>
-                < LinkTo dir={"/search"} label={"Search"} ico={search_ico} className='searchNav'/>
-                < LinkTo dir={"/random"} label={"Random"} ico={shuffle_ico} className='randomNav'/>
+                < LinkTo dir={"/"} label={"Home"} ico={home_ico}/>
+                < LinkTo dir={"/search"} label={"Search"} ico={search_ico}/>
+                < LinkTo dir={"/random"} label={"Random"} ico={shuffle_ico}/>
             </nav>
         </div>
     );
