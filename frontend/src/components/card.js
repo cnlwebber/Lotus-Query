@@ -37,7 +37,7 @@ const CardButton = ({ scryfall_id, name }) => {
     const linkTo = `/scry${queryParams}`;
     return (
         <Link to={linkTo} className="cardButton">
-            <img src={image} alt={name} classname={`cardImage`}></img>
+            <img src={image} alt={name} className={`cardImage`}></img>
         </Link>
     );
 };

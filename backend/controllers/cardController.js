@@ -26,15 +26,9 @@ exports.queryCards = async (req, res) => {
 }
 
 exports.scryfallSearch = async (req, res) => {
-    console.clear();
-    console.log("scryfallSearch");
-    console.log(req);
     const scryfall_id = req.params.scryfall_id;
-    console.log(scryfall_id);
     try {
         const scryCard = await idSearch(scryfall_id);
-        console.log("result");
-        console.log(scryCard);
         res.status(200).json(scryCard);
     } catch (error) {
         res.status(500).json({ error: 'Error fetching card with scryfall id'})
