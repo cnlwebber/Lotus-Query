@@ -7,9 +7,17 @@ const getRandCards = async (numOfCards) => {
 
 
 const idSearch = async (scryfall_id) => {
-    console.log("ID SEARCH");
-    console.log(scryfall_id);
-    const [rows] = await db.execute('SELECT * FROM cards WHERE scryfall_id = ?', [scryfall_id]);
+    const [rows] = await db.execute(`
+        SELECT DISTINCT * 
+        FROM cards 
+        NATURAL JOIN legality 
+        NATURAL JOIN cmc 
+        LEFT OUTER JOIN creature USING (uuid)
+        NATURAL JOIN color
+        NATURAL JOIN sets 
+        WHERE scryfall_id = ?
+        LIMIT 1
+    `, [scryfall_id]);
     console.log(rows);
     return rows;
 }

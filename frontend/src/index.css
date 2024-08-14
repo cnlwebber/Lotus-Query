@@ -333,3 +333,16 @@ code {
     width: 1rem;
     height: 1rem;
 }
+
+.cardPage {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between; 
+}
+
+.cardArea, .infoArea {
+    flex: 1; 
+    margin: 10px; 
+    padding-left: 10px;
+    padding-bottom: 10px;
+}
