@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import SearchBar from '../components/searchBar.js';
-import CardButton from '../components/card.js';
 
 const Search = () => {
   

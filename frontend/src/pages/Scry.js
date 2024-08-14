@@ -8,16 +8,8 @@ const Scry = () => {
 
     useEffect(() => {
       const getCards = async () => {
-        
-        console.log("Scrying...");
-        console.log("scryfall_id:");
         const scryfall_id = window.location.pathname.split("/").pop();
-        console.log(scryfall_id);
         const response = await scry(scryfall_id);
-        console.log("Scry response:");
-        console.log(response);
-        console.log(response.data);
-        
         setCard(response.data);
       };
       getCards();
