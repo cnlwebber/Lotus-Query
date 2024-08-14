@@ -1,7 +1,7 @@
 :root{
     --light-background: #3f3f3f;
     --dark-background: #282828;
-    --animation-speed: 0s;
+    --animation-speed: 60s;
     --slideshow-card-width: 14rem;
     --slideshow-num-of-cards: 20;
 }
