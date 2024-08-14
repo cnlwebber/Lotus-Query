@@ -26,9 +26,6 @@ const searchCards = async (req) => {
     let flag = true
     const filters = queryString.split(' ');
     filters.forEach(filter => {
-    if (queryString.includes('cmc')) {
-        console.log("query:", queryString);
-    }
         if (filter.startsWith('cmc')) {
             let operator, value;
             if (checkOperator(filter.slice(3, 5))) {
@@ -38,9 +35,6 @@ const searchCards = async (req) => {
                 operator = filter.slice(3, 4);
                 value = filter.slice(4);
             }
-            console.log("CMC OPERATOR:", operator)
-            console.log(`CMC SQL:cmc.cmc ${operator} ?`);
-            console.log(`CMC VALUE: ${value}`);
             conditions.push(`cmc.cmc ${operator} ?`);
             values.push(parseInt(value, 10));
             baseQuery += ' INNER JOIN cmc ON cards.mana_cost = cmc.mana_cost';
