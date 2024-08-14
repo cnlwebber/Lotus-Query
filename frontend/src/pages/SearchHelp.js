@@ -23,7 +23,7 @@ Search Tools:
 const SearchHelp = () => {
     return (
         <div className="searchHelpOuter">
-        <div className="searchHelpInner">
+        <div className="innerWrapper">
             <h1> Search Query Parameters </h1>
             <p> There are many ways that you can search for Magic the Gathering cards in Lotus Query! Each card characterstic can be queried using the parameters defined by their header. Note that code blocks prefixed by &apos;🔍&apos; are example queries within the search bar. </p>
             <h2> Name </h2>
