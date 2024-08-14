@@ -4,6 +4,7 @@
     --light-background: rgb(63, 63, 63);
     /* #282828 */
     --dark-background: rgb(40, 40, 40);
+    --non-flashwhite: #F0EDEE;
     --animation-speed: 60s;
     --slideshow-card-width: 14rem;
     --slideshow-num-of-cards: 20;
@@ -99,6 +100,8 @@ code {
 
 
 .searchWrapper {
+    display: flex;
+    flex-direction: column;
     width: 500px;
     margin-bottom: 1.5rem;
 }
@@ -332,6 +335,7 @@ code {
     padding: 0;
 }
 
+
 .pagination-page:hover, .pagination-prev:hover, .pagination-next:hover {
     background-color: var(--purple);
     color: #fff;
@@ -380,6 +384,125 @@ code {
     flex-direction: row;
 }
 
+
+.cardArea, .infoArea {
+    flex: 1; 
+    margin: 10px; 
+    padding-left: 10px;
+    padding-bottom: 10px;
+}
+
+/* https://codepen.io/mrphang/pen/XWxKdpV */
+
+/* Custom Select wrapper */
+.ordering-select {
+    position: relative;
+    display: flex;
+    width: 10em;
+    height: 2em;
+    border-radius: .25em;
+    overflow: hidden;
+    align-items: center;
+}
+
+/* Reset Select */
+.ordering-select select {
+    appearance: none;
+    outline: 10px var(--non-flashwhite);
+    border: 0;
+    box-shadow: none;
+    flex: 1;
+    padding: 0 1em;
+    color: var(--non-flashwhite);
+    background-color: var(--dark-background);
+    background-image: none;
+    cursor: pointer;
+    width: 100%;
+    line-height: 1.5em;
+}
+
+/* Remove IE arrow */
+.ordering-select select::-ms-expand {
+    display: none;
+}
+
+/* Arrow */
+.ordering-select::after {
+    content: '\25BC';
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    padding: 0.5em;
+    background-color: var(--light-background);
+    transition: .25s all ease;
+    pointer-events: none;
+}
+
+/* Transition */
+.ordering-select:hover::after {
+    color: var(--purple);
+}
+
+/* Custom Select wrapper */
+.direction-select {
+    position: relative;
+    display: flex;
+    width: 10em;
+    height: 2em;
+    border-radius: .25em;
+    overflow: hidden;
+    align-items: center;
+}
+
+/* Reset Select */
+.direction-select select {
+    appearance: none;
+    outline: 10px var(--non-flashwhite);
+    border: 0;
+    box-shadow: none;
+    flex: 1;
+    padding: 0 1em;
+    color: var(--non-flashwhite);
+    background-color: var(--dark-background);
+    background-image: none;
+    cursor: pointer;
+    width: 100%;
+    line-height: 1.5em;
+}
+
+/* Remove IE arrow */
+.direction-select select::-ms-expand {
+    display: none;
+}
+
+/* Arrow */
+.direction-select::after {
+    content: '\25BC';
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    padding: 0.5em;
+    background-color: var(--light-background);
+    transition: .25s all ease;
+    pointer-events: none;
+}
+
+/* Transition */
+.direction-select:hover::after {
+    color: var(--purple);
+}
+
+.select-container {
+    display:absolute; 
+    align-items: center;
+    justify-content: left;
+    height: 5rem;
+}
+
+  /* https://codepen.io/mrphang/pen/XWxKdpV */
+
 .cardArea {
     margin-right: 3rem;
 }
@@ -411,4 +534,3 @@ code {
 .infoArea td {
     width: 20rem;
 }
-
