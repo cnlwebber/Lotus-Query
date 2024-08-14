@@ -72,7 +72,7 @@ const Scry = () => {
               </tr>
               <tr>
                 <th> Rarity </th>
-                <td> {card.rarity.toUpperCase()} </td>
+                <td> {card.rarity.charAt(0).toUpperCase() + card.rarity.slice(1)} </td>
               </tr>
             </table>
             <h2> Legal Rulings: </h2>
