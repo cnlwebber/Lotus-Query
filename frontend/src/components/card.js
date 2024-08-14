@@ -1,20 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { randomCard } from '../api.js';
+import { nRandomCards } from '../api.js';
 
 export const RandCardButton = () => {
     const [randCards, setRandCards] = useState([]);
 
     useEffect(() => {
         const getCards = async () => {
-            const response = await randomCard();
-            console.log(response.data)
+            const response = await nRandomCards(5);
             setRandCards(response.data);
         };
         getCards();
     }, []);
 
-    console.log(randCards)
     return (
       <div>
       {randCards.map(card => (

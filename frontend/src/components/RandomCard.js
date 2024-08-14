@@ -1,19 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import CardButton from './card.js';
-import { randomCard } from '../api.js';
+import { nRandomCards } from '../api.js';
 
 const RandomCard = () => {
   const [randCards, setRandCard] = useState([]);
 
   useEffect(() => {
     const getCards = async () => {
-      const response = await randomCard();
+      const response = await nRandomCards(5);
       console.log(response.data)
       setRandCard(response.data);
     };
     getCards();
   }, []);
-    console.log(randCards)
 
 
   return (

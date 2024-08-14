@@ -8,7 +8,6 @@ exports.getRandomCard = async (_req, res) => {
     try {
         const cards = await getRandCards(randDisplay);
         // 200 status code is the "OK" code (successful HTTP request)
-        console.log(cards)
         res.status(200).json(cards);
         
     } catch (error) {
