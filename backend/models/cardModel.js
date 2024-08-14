@@ -5,6 +5,11 @@ const getRandCards = async (numOfCards) => {
     return rows;
 };
 
+const idSearch = async (scryfall_id) => {
+    const [rows] = await db.execute('SELECT * FROM cards WHERE scryfall_id = ?', [scryfall_id]);
+    return rows;
+}
+
 const searchCards = async (req) => {
     const queryString = req.query.query;
     let baseQuery = 'SELECT * FROM cards';
@@ -88,4 +93,4 @@ const searchCards = async (req) => {
     return rows;
 };
 
-module.exports = { getRandCards, searchCards };
+module.exports = { getRandCards, searchCards, idSearch };

@@ -6,8 +6,6 @@
 
 Search Tools:
 
-    "v: or vision:" search the text of the card (idk about this, we don't have it in the database)
-
     "cmc> cmc< cmc<= cmc>= cmc=" cmc ranges/values
         
     "pow..." power ranges/values

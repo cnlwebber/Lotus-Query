@@ -9,3 +9,4 @@ const api = axios.create({
 export const fetchCards = () => api.get('/cards');
 export const searchQuery = (query) => api.get('/cards/search', { params: { query } })
 export const randomCard = () => api.get('/random')
+export const scry = (scryfall_id) => api.get('/scry', { params: { scryfall_id } })

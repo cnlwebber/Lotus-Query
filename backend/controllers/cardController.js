@@ -24,3 +24,12 @@ exports.queryCards = async (req, res) => {
         res.status(500).json({ error: 'Error querying cards' })
     }
 }
+
+exports.scryfallSearch = async (req, res) => {
+    try {
+        const res = await idSearch(req.query.scryfall_id);
+        res.status(200).json(res);
+    } catch (error) {
+        res.status(500).json({ error: 'Error fetching card with scryfall id'})
+    }
+}

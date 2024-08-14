@@ -4,16 +4,24 @@ import { useLocation, useSearchParams } from 'react-router-dom';
 import { searchQuery } from '../api.js';
 import CardButton from '../components/card';
 
+
 const Results = () => {
+
+
   const location = useLocation();
   const [searchParams] = useSearchParams();
   const [results, setResults] = useState(location.state?.results || []);
   const [query, setQuery] = useState(location.state?.query || searchParams.get('query'));
   const [loading, setLoading] = useState(!location.state?.results);
   const [error, setError] = useState(null);
-
   const [currentPage, setCurrentPage] = useState(1);
   const resultsPerPage = 30;
+  const lastResultIndex = currentPage * resultsPerPage;
+  const firstResultIndex = lastResultIndex - resultsPerPage;
+  const currentResults = results.slice(firstResultIndex, lastResultIndex);
+  const totalPages = Math.ceil(results.length / resultsPerPage);
+
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   useEffect(() => {
     const fetchResults = async () => {
@@ -35,12 +43,9 @@ const Results = () => {
     }
   }, [query, location.state]);
 
-  const lastResultIndex = currentPage * resultsPerPage;
-  const firstResultIndex = lastResultIndex - resultsPerPage;
-  const currentResults = results.slice(firstResultIndex, lastResultIndex);
 
-  const paginate = (pageNumber) => setCurrentPage(pageNumber);
-  const totalPages = Math.ceil(results.length / resultsPerPage);
+
+
 
   return (
     <div>
