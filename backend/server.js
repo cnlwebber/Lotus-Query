@@ -15,7 +15,7 @@ app.use(express.json());
 // Set route prefixes here for organization.
 app.use('/api/cards', cardRoutes);
 app.use('/api/random', randRoutes);
-app.use('/api', specificRoutes);
+app.use('/api/', specificRoutes);
 // Port is either set by the environment when hosting online or defaults to 5000 when hosting locally
 const PORT = process.env.PORT || 5000;
 

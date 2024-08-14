@@ -23,14 +23,14 @@ export const RandCardButton = () => {
 }
 
 const CardButton = ({ scryfall_id, name }) => {
+
+  // https://mtgjson.com/faq/#how-do-i-access-a-card-s-imagery
     const fileFace = 'front';
     const fileType= 'normal';
     const fileFormat = 'jpg';
     const dir1 = scryfall_id.charAt(0);
     const dir2 = scryfall_id.charAt(1);
     const image = `https://cards.scryfall.io/${fileType}/${fileFace}/${dir1}/${dir2}/${scryfall_id}.${fileFormat}`;
-    
-    // Construct the URL using the scryfall_id
     const queryParams = `/${scryfall_id}`;
     const linkTo = `/scry${queryParams}`;
     return (
