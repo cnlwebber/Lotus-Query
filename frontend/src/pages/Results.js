@@ -31,7 +31,6 @@ const Results = () => {
         console.error(err);
       } finally {
         setLoading(false);
-        window.location.reload();
       }
     };
 

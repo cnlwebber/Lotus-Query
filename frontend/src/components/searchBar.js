@@ -26,12 +26,13 @@ const SearchBar = () => {
             console.error(err);
         } finally {
             setLoading(false);
+            window.location.reload();
         }
     };
 
     return (
         <div className="searchWrapper">
-        <a href="https://gprivate.com/6cqkh"> how do I search? </a>
+        <a href="/search/help"> how do I search? </a>
         <form onSubmit={submitQuery} className="search">
             <input 
                 type="text"
