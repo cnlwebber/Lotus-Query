@@ -1,7 +1,9 @@
 :root{
-    --light-background: #3f3f3f;
-    --dark-background: #282828;
-    --animation-speed: 40s;
+    /* #3f3f3f */
+    --light-background: rgb(63, 63, 63);
+    /* #282828 */
+    --dark-background: rgb(40, 40, 40);
+    --animation-speed: 60s;
     --slideshow-card-width: 14rem;
     --slideshow-num-of-cards: 20;
 }
@@ -27,6 +29,7 @@ code {
 }
 
 #nav-bar {
+    position: sticky;
     display: flex;
     height: 5rem;
     background-color: var(--light-background);
@@ -138,6 +141,28 @@ code {
     height: 20rem;
     width: 80vw;
     overflow: hidden;
+}
+
+.cardSlideshow::before {
+    position: absolute;
+    left: 10vw;
+    top: calc(5rem + 10vh);
+    background: linear-gradient(to right, var(--dark-background) 0%, rgba(0,0,0,0) 100%);
+    content: "";
+    height: 20rem;
+    width: 10rem;
+    z-index: 2;
+}
+.cardSlideshow::after {
+    position: absolute;
+    right: 10vw;
+    top: calc(5rem + 10vh);
+     background: linear-gradient(to right, var(--dark-background) 0%, rgba(40,40,40,0) 100%);
+    content: "";
+    height: 20rem;
+    width: 10rem;
+    z-index: 2;
+    transform: rotate(180deg);
 }
 
 .cardSlideshowTrack {

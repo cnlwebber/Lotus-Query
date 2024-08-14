@@ -20,6 +20,7 @@ const CardSlideshow = () => {
     // modified source code:
     // https://codepen.io/studiojvla/pen/qVbQqW
     return (
+        <div>
         <div class="cardSlideshow">
             <div class="cardSlideshowTrack">
                 {randCards.map(card => (
@@ -33,6 +34,7 @@ const CardSlideshow = () => {
                     </div>
                 ))}
             </div>
+        </div>
         </div>
     );
 };
