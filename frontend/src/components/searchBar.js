@@ -30,6 +30,8 @@ const SearchBar = () => {
     };
 
     return (
+        <div className="searchWrapper">
+        <a href="https://gprivate.com/6cqkh"> how do I search? </a>
         <form onSubmit={submitQuery} className="search">
             <input 
                 type="text"
@@ -49,6 +51,7 @@ const SearchBar = () => {
             </button>
             {error && <p className="error">{error}</p>}
         </form>
+        </div>
     );
 };
 

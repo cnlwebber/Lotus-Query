@@ -1,4 +1,5 @@
 :root{
+    --purple: #7a5af5;
     /* #3f3f3f */
     --light-background: rgb(63, 63, 63);
     /* #282828 */
@@ -18,10 +19,13 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-p, h1 {
+p, h1, h2 {
     color: #8b8b8b;
 }
 
+a  {
+    color: var(--purple);
+}
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
@@ -55,10 +59,9 @@ code {
 
 #nav-bar-logo h2 {
     font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+    color: var(--purple);
     font-size: 1.7rem;
 }
-
-
 
 #nav-bar nav {
     display: flex;
@@ -79,15 +82,27 @@ code {
 
 #nav-bar a {
     font-size: 1.8rem;
-    color: black;
+    color: var(--purple);
     text-decoration: none;
 }
 
 /* search bar */
+
+.searchPage {
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 10vw;
+}
+
+.searchWrapper {
+    width: 500px;
+}
+
 .search {
     width: 500px;
     height: 40px;
-    margin: 150px auto;
     background: #121212;
 }
   
@@ -120,6 +135,45 @@ code {
 .search button:hover {
     background: #F0EDEE;
     color: #121212;
+}
+
+#results-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 5vw;
+}
+
+#results-wrapper .cardButton img {
+    width: 14rem;
+    padding: 1rem;
+    box-sizing: border-box;
+}
+
+#results-wrapper .cardButton img:hover {
+    border: 1px solid var(--purple);
+}
+
+.pageNumbers {
+    display: flex;
+    width: 100vw;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.pageNumbers button {
+    height: 2rem;
+    width: 3rem;
+}
+
+.pageNumbers img {
+    cursor: pointer;
+    width: 2rem;
+}
+
+.pageNumbers br {
+    padding: 1rem;
 }
 
 .homePage {
@@ -157,7 +211,7 @@ code {
     position: absolute;
     right: 10vw;
     top: calc(5rem + 10vh);
-     background: linear-gradient(to right, var(--dark-background) 0%, rgba(40,40,40,0) 100%);
+    background: linear-gradient(to right, var(--dark-background) 0%, rgba(40,40,40,0) 100%);
     content: "";
     height: 20rem;
     width: 10rem;
@@ -192,3 +246,5 @@ code {
     padding-left: 0;
     padding-right: 0;
 }
+
+

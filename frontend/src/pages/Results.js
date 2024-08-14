@@ -3,6 +3,8 @@ import SearchBar from '../components/searchBar';
 import { useLocation, useSearchParams } from 'react-router-dom';
 import { searchQuery } from '../api.js';
 import CardButton from '../components/card';
+import left_ico from '../assets/left-arrow.svg';
+import right_ico from '../assets/right-arrow.svg';
 
 const Results = () => {
   const location = useLocation();
@@ -13,7 +15,9 @@ const Results = () => {
   const [error, setError] = useState(null);
 
   const [currentPage, setCurrentPage] = useState(1);
-  const resultsPerPage = 30;
+  const resultsPerPage = 50;
+
+  
 
   useEffect(() => {
     const fetchResults = async () => {
@@ -27,6 +31,7 @@ const Results = () => {
         console.error(err);
       } finally {
         setLoading(false);
+        window.location.reload();
       }
     };
 
@@ -42,18 +47,7 @@ const Results = () => {
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
   const totalPages = Math.ceil(results.length / resultsPerPage);
 
-  return (
-    <div>
-      <SearchBar />
-      <h2>{loading ? "Loading..." : `${results.length} results for "${query}"`}</h2>
-      {error && <p className="error">{error}</p>}
-      <ul>
-        {currentResults.map((result, index) => (
-          <CardButton key={index} scryfall_id={result.scryfall_id} name={result.name}></CardButton>
-        ))}
-      </ul>
-      <div>
-        {Array.from({ length: totalPages }, (_, index) => (
+  let pages = Array.from({ length: totalPages }, (_, index) => (
           <button
             key={index + 1}
             onClick={() => paginate(index + 1)}
@@ -61,8 +55,50 @@ const Results = () => {
           >
             {index + 1}
           </button>
+        ));
+
+  const n = pages.length;
+  if (n > 10) {
+    pages = (
+      <>
+        {pages[0]} {pages[1]}
+        <br/>
+        {pages[Math.floor(n / 2)]}
+        <br/>
+        {pages[n-2]} {pages[n-1]}
+      </>
+    );
+  }
+
+  if (n > 1) {
+      pages = 
+      <>
+        <img src={left_ico} button key={totalPages + 1} onClick={() => paginate(currentPage - 1)} disabled={currentPage === 1} />
+        <br/>
+        {pages}
+        <br/>
+        <img src={right_ico} key={totalPages + 2} onClick={() => paginate(currentPage + 1)} disabled={currentPage === n} />
+      </>
+  }
+
+  pages = (
+    <div className="pageNumbers">
+      {pages}
+    </div>
+  );
+
+  return (
+    <div id="results-wrapper">
+      <SearchBar />
+      <h2>{loading ? "Loading..." : `Showing page ${currentPage} of ${results.length} results for "${query}"`}</h2>
+      {error && <p className="error">{error}</p>}
+      {pages}
+      <ul>
+        {currentResults.map((result, index) => (
+          <CardButton key={index} scryfall_id={result.scryfall_id} name={result.name}></CardButton>
         ))}
-      </div>
+      </ul>
+      {pages}
     </div>
   );
 };

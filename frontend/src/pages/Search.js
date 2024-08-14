@@ -5,7 +5,7 @@ import CardButton from '../components/card.js';
 const Search = () => {
   
     return (
-      <div className="homePage">
+      <div className="searchPage">
         <SearchBar></SearchBar>
       </div>
     );
