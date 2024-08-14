@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import SearchBar from '../components/searchBar';
 import { useLocation, useSearchParams } from 'react-router-dom';
 import { searchQuery } from '../api.js';
 import CardButton from '../components/card';
+import ReactPaginate from 'react-paginate';
 import left_ico from '../assets/left-arrow.svg';
 import right_ico from '../assets/right-arrow.svg';
 
@@ -10,22 +11,30 @@ const Results = () => {
   const location = useLocation();
   const [searchParams] = useSearchParams();
   const [results, setResults] = useState(location.state?.results || []);
-  const [query, setQuery] = useState(location.state?.query || searchParams.get('query'));
   const [loading, setLoading] = useState(!location.state?.results);
   const [error, setError] = useState(null);
-
-  const [currentPage, setCurrentPage] = useState(1);
-  const resultsPerPage = 50;
-
   
+  // Pagination
+  const [currentItems, setCurrentItems] = useState([]);
+  const [pageCount, setPageCount] = useState(0);
+  const [itemOffset, setItemOffset] = useState(0);
+  const [currentPage, setCurrentPage] = useState(0);
+  const resultsPerPage = 50;
 
   useEffect(() => {
     const fetchResults = async () => {
       setLoading(true);
       setError(null);
+
       try {
-        const res = await searchQuery(query);
-        setResults(res.data);
+        const query = location.state?.query || searchParams.get('query');
+        if (query) {
+          const res = await searchQuery(query);
+          setResults(res.data);
+          setPageCount(Math.ceil(res.data.length / resultsPerPage));
+          const endOffset = itemOffset + resultsPerPage;
+          setCurrentItems(res.data.slice(itemOffset, endOffset));
+        }
       } catch (err) {
         setError("Failed to fetch search results. Please try again.");
         console.error(err);
@@ -34,70 +43,62 @@ const Results = () => {
       }
     };
 
-    if (!location.state?.results || location.state.query !== query) {
-      fetchResults();
-    }
-  }, [query, location.state]);
+    fetchResults();
+  }, [itemOffset, resultsPerPage, location.state?.query, searchParams]);
 
-  const lastResultIndex = currentPage * resultsPerPage;
-  const firstResultIndex = lastResultIndex - resultsPerPage;
-  const currentResults = results.slice(firstResultIndex, lastResultIndex);
-
-  const paginate = (pageNumber) => setCurrentPage(pageNumber);
-  const totalPages = Math.ceil(results.length / resultsPerPage);
-
-  let pages = Array.from({ length: totalPages }, (_, index) => (
-          <button
-            key={index + 1}
-            onClick={() => paginate(index + 1)}
-            disabled={currentPage === index + 1}
-          >
-            {index + 1}
-          </button>
-        ));
-
-  const n = pages.length;
-  if (n > 10) {
-    pages = (
-      <>
-        {pages[0]} {pages[1]}
-        <br/>
-        {pages[Math.floor(n / 2)]}
-        <br/>
-        {pages[n-2]} {pages[n-1]}
-      </>
-    );
-  }
-
-  if (n > 1) {
-      pages = 
-      <>
-        <img src={left_ico} button key={totalPages + 1} onClick={() => paginate(currentPage - 1)} disabled={currentPage === 1} />
-        <br/>
-        {pages}
-        <br/>
-        <img src={right_ico} key={totalPages + 2} onClick={() => paginate(currentPage + 1)} disabled={currentPage === n} />
-      </>
-  }
-
-  pages = (
-    <div className="pageNumbers">
-      {pages}
-    </div>
-  );
+  const handlePageClick = useCallback((event) => {
+    const newOffset = (event.selected * resultsPerPage) % results.length;
+    setItemOffset(newOffset);
+    setCurrentPage(event.selected);
+  }, [resultsPerPage, results.length]);
 
   return (
     <div id="results-wrapper">
       <SearchBar />
-      <h2>{loading ? "Loading..." : `Showing page ${currentPage} of ${results.length} results for "${query}"`}</h2>
+      <h2>{loading ? "Loading..." : `Showing page ${currentPage + 1} of ${pageCount} pages`}</h2>
       {error && <p className="error">{error}</p>}
-      {pages}
+
+      <ReactPaginate
+        breakLabel={"..."}
+        breakClassName={'pagination-break'}
+        nextLabel={<img src={right_ico} alt='next'/>}
+        disabledClassName={'pagination-disabled'}
+        onPageChange={handlePageClick}
+        nextClassName={'pagination-next'}
+        previousClassName={'pagination-prev'}
+        pageRangeDisplayed={5}
+        pageCount={pageCount}
+        pageClassName={'pagination-page'}
+        previousLabel={<img src={left_ico} alt='prev'/>}
+        renderOnZeroPageCount={null}
+        containerClassName={"pagination-container"}
+        activeClassName={"pagination-active"}
+        forcePage={currentPage}
+      />
+
       <ul>
-        {currentResults.map((result, index) => (
-          <CardButton key={index} scryfall_id={result.scryfall_id} name={result.name}></CardButton>
+        {currentItems.map((result, index) => (
+          <CardButton key={index} scryfall_id={result.scryfall_id} name={result.name} />
         ))}
       </ul>
-      {pages}
+
+      <ReactPaginate
+        breakLabel={"..."}
+        breakClassName={'pagination-break'}
+        nextLabel={<img src={right_ico} alt='next'/>}
+        disabledClassName={'pagination-disabled'}
+        onPageChange={handlePageClick}
+        nextClassName={'pagination-next'}
+        previousClassName={'pagination-prev'}
+        pageRangeDisplayed={5}
+        pageCount={pageCount}
+        pageClassName={'pagination-page'}
+        previousLabel={<img src={left_ico} alt='prev'/>}
+        renderOnZeroPageCount={null}
+        containerClassName={"pagination-container"}
+        activeClassName={"pagination-active"}
+        forcePage={currentPage}
+      />
     </div>
   );
 };

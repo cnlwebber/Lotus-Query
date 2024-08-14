@@ -6,7 +6,6 @@ const homeDisplay = 5;
 
 exports.getHomeCards = async (req, res) => {
     try {
-        console.log("req.query.n:", req.query.n)
         const cards = await getRandCards(req.query.n);
         // 200 status code is the "OK" code (successful HTTP request)
         res.status(200).json(cards);
