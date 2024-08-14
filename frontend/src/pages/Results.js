@@ -17,7 +17,7 @@ const Results = () => {
   const [loading, setLoading] = useState(!location.state?.results);
   const [error, setError] = useState(null);
   
-  // Pagination
+  // Pagination https://www.npmjs.com/package/react-paginate
   const [currentItems, setCurrentItems] = useState([]);
   const [pageCount, setPageCount] = useState(0);
   const [itemOffset, setItemOffset] = useState(0);
