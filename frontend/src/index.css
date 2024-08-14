@@ -164,32 +164,30 @@ code {
 }
 
 .cardSlideshow {
+    justify-content: center;
     background-color: var(--light-background);
     height: 20rem;
-    width: 80vw;
+    width: 76.5vw;
     overflow: hidden;
 }
 
-.cardSlideshow::before {
+.cardSlideshow::before, .cardSlideshow::after {
     position: absolute;
-    left: 10vw;
     top: calc(5rem + 10vh);
-    background: linear-gradient(to right, var(--dark-background) 0%, rgba(0,0,0,0) 100%);
     content: "";
-    height: 20rem;
-    width: 10rem;
+    height: 100%;
+    width: 10%;
     z-index: 2;
 }
+
+.cardSlideshow::before {
+    background: linear-gradient(to right, var(--dark-background) 0%, rgba(0,0,0,0) 100%);
+    left: 10%;
+}
+
 .cardSlideshow::after {
-    position: absolute;
-    right: 10vw;
-    top: calc(5rem + 10vh);
-    background: linear-gradient(to right, var(--dark-background) 0%, rgba(40,40,40,0) 100%);
-    content: "";
-    height: 20rem;
-    width: 10rem;
-    z-index: 2;
-    transform: rotate(180deg);
+    right: 10%;
+    background: linear-gradient(to left, var(--dark-background) 0%, rgba(0,0,0,0) 100%);
 }
 
 .cardSlideshowTrack {
